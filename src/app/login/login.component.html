@@ -1,0 +1,111 @@
+<div class="login-wrapper">
+  <form class="login">
+    <section class="title">
+      <h3 class="welcome">Welcome to</h3>
+      My Demo
+      <!-- <h5 class="hint">Use your Company ID to sign in or create one now</h5> -->
+    </section>
+    <div class="login-group">
+      <clr-input-container>
+        <label class="clr-sr-only">Username</label>
+        <input type="text" name="username" clrInput placeholder="Username" [(ngModel)]="username" />
+      </clr-input-container>
+      <clr-password-container>
+        <label class="clr-sr-only">Password</label>
+        <input type="password" name="password" clrPassword placeholder="Password" [(ngModel)]="password" />
+      </clr-password-container>
+      <clr-checkbox-wrapper>
+        <label>Remember me</label>
+        <input type="checkbox" name="rememberMe" clrCheckbox [(ngModel)]="rememberMe" />
+      </clr-checkbox-wrapper>
+      <button type="submit" class="btn btn-primary" style="margin: 1px;">Login</button>
+      <a href="javascript://" class="signup" (click)="isNewUser = true">New Here, Sign up</a>
+      <div class="error active" *ngIf="false">
+        Invalid user name or password
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- Sign Up Pop Up start -->
+<clr-modal [(clrModalOpen)]="isNewUser" [clrModalSize]="'lg'">
+  <h3 class="modal-title">New User, Sign Up Here</h3>
+  <div class="modal-body">
+    <form clrForm [formGroup]="signUpForm">
+      <div class="clr-row">
+        <div class="clr-col">
+          <clr-input-container>
+            <label class="clr-col-sm-12">First Name</label>
+            <input class="clr-col-12 clr-col-sm-12" type="text" clrInput maxlength="100" formControlName="firstName" />
+            <clr-control-error>First Name is required</clr-control-error>
+          </clr-input-container>
+        </div>
+        <div class="clr-col">
+          <clr-input-container>
+            <label class="clr-col-sm-12">Last Name</label>
+            <input class="clr-col-12 clr-col-sm-12" type="text" clrInput maxlength="100" formControlName="lastName" />
+            <clr-control-error>Last Name is required</clr-control-error>
+          </clr-input-container>
+        </div>
+        <div class="clr-col">
+          <clr-input-container>
+            <label class="clr-col-sm-12">Email Id</label>
+            <input class="clr-col-12 clr-col-sm-12" type="text" clrInput maxlength="100" formControlName="emailId" />
+            <clr-control-error>EmailId is required</clr-control-error>
+          </clr-input-container>
+        </div>
+      </div>
+      <div class="clr-row">
+        <div class="clr-col">
+          <clr-input-container>
+            <label class="clr-col-sm-12">Password</label>
+            <input class="clr-col-12 clr-col-sm-12" type="password" clrInput maxlength="100" formControlName="password" />
+            <clr-control-error>Password is required</clr-control-error>
+          </clr-input-container>
+        </div>
+        <div class="clr-col">
+          <clr-input-container>
+            <label class="clr-col-sm-12">Confirm Password</label>
+            <input class="clr-col-12 clr-col-sm-12" type="password" clrInput maxlength="100"
+              formControlName="confirmPassword" />
+            <clr-control-error>Confirm Password is required</clr-control-error>
+          </clr-input-container>
+        </div>
+      </div>
+      <div class="clr-row">
+        <div class="clr-col">
+          <clr-select-container>
+            <label class="clr-col-12 clr-col-sm-12">Country</label>
+            <select class="clr-col-12 clr-col-sm-12" clrSelect formControlName="country">
+              <option value="">--Select--</option>
+              <option *ngFor="let unit of countryData" value="{{unit.code}}">
+                {{unit.name}}
+              </option>
+            </select>
+            <clr-control-error>Country is required</clr-control-error>
+          </clr-select-container>
+        </div>
+        <div class="clr-col">
+          <clr-input-container>
+            <label class="clr-col-sm-12">Mobile Number</label>
+            <input class="clr-col-12 clr-col-sm-12" type="text" clrInput maxlength="100" formControlName="mobileNo" />
+            <clr-control-error>Mobile No is required</clr-control-error>
+          </clr-input-container>
+        </div>
+        <div class="clr-col-sm-2 clr-col-2">
+          <clr-input-container>
+            <label class="clr-col-sm-12">Age</label>
+            <input class="clr-col-12 clr-col-sm-12" type="text" clrInput maxlength="100" formControlName="age" />
+            <clr-control-error>age No is required</clr-control-error>
+          </clr-input-container>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="isNewUser = false">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="isNewUser = false">Sign-in</button>
+  </div>
+
+</clr-modal>
+<!-- Sign Up Pop Up end -->
