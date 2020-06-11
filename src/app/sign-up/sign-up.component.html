@@ -1,0 +1,92 @@
+<div class="clr-row">
+    <div class="clr-col-sm-6 clr-offset-sm-3" style="padding-left: 70px;">
+        <h2>Let us know who are you by registering with us</h2>
+    </div>
+</div>
+<div class="clr-row">
+  <div class="clr-col-sm-4 clr-offset-sm-4">
+    <form clrForm [formGroup]="signUpForm">
+      <clr-input-container>
+        <label class="clr-col-sm-12">First Name</label>
+        <input class="clr-col-12 clr-col-sm-12" type="text" clrInput maxlength="100" formControlName="firstName" />
+        <clr-control-error *clrIfError="required">First Name is required</clr-control-error>
+      </clr-input-container>
+      <clr-input-container>
+        <label class="clr-col-sm-12">Last Name</label>
+        <input class="clr-col-12 clr-col-sm-12" type="text" clrInput maxlength="100" formControlName="lastName" />
+        <clr-control-error *clrIfError="required">Last Name is required</clr-control-error>
+      </clr-input-container>
+      <clr-input-container>
+        <label class="clr-col-sm-12">Email Id</label>
+        <input class="clr-col-12 clr-col-sm-12" type="text" clrInput maxlength="100" formControlName="emailId" />
+        <clr-control-error *clrIfError="required">EmailId is required</clr-control-error>
+        <clr-control-error *clrIfError="invalidEmail">Invalid format for Email</clr-control-error>
+        <clr-control-error *clrIfError="invalidDomain">Invalid Domain for Email. Either use @gmail.com or @dal.ca</clr-control-error>
+      </clr-input-container>
+      <clr-input-container>
+        <label class="clr-col-sm-12">Password</label>
+        <input class="clr-col-12 clr-col-sm-12" type="password" clrInput minlength="8" maxlength="32" formControlName="password" />
+        <clr-control-error>Password is required</clr-control-error>
+      </clr-input-container>
+      <clr-password-container>
+        <label class="clr-col-sm-12">Confirm Password</label>
+        <input class="clr-col-12 clr-col-sm-12" type="password" clrPassword minlength="8" maxlength="32"
+          formControlName="confirm" />
+        <clr-control-error *clrIfError="required">Confirm Password is required</clr-control-error>
+        <clr-control-error *clrIfError="invalidPassword">Password doesnot Match</clr-control-error>
+      </clr-password-container>
+      <clr-select-container>
+        <label class="clr-col-12 clr-col-sm-12">Country</label>
+        <select class="clr-col-12 clr-col-sm-12" clrSelect formControlName="country">
+          <option value="">--Select--</option>
+          <option *ngFor="let unit of countryData" value="{{unit.code}}">
+            {{unit.name}}
+          </option>
+        </select>
+        <clr-control-error>Country is required</clr-control-error>
+      </clr-select-container>
+      <div class="clr-row">
+          <div class="clr-col-sm-8">
+            <clr-input-container>
+                <label class="clr-col-sm-12">Mobile Number</label>
+                <input class="clr-col-12 clr-col-sm-12" type="text" clrInput maxlength="100" formControlName="mobileNo" />
+                <clr-control-error *clrIfError="required">Mobile No is required</clr-control-error>
+                <clr-control-error *clrIfError="invalidNumber">Please use numbers.</clr-control-error>
+              </clr-input-container>
+          </div>
+          <div class="clr-col-sm-4">
+            <clr-input-container>
+                <label class="clr-col-sm-12">Age</label>
+                <input class="clr-col-12 clr-col-sm-12" type="text" clrInput maxlength="100" formControlName="age" />
+                <clr-control-error>age No is required</clr-control-error>
+              </clr-input-container>
+          </div>
+      </div>
+      <button class="btn btn-primary btn-block" (click)="signNewUser()">Sign-In</button>
+    </form>
+  </div>
+</div>
+
+<!-- Success Sign Up -->
+<clr-modal [(clrModalOpen)]="signupSuccessFull" [clrModalSize]="'xs'">
+    <h3 class="modal-title">Success</h3>
+    <div class="modal-body">
+      <h4>Please use email and password to login!..</h4>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline" (click)="closeModal('success')">Ok</button>
+    </div>
+  </clr-modal>
+  <!-- Success Sign Up ends -->
+  
+  <!-- Failure Sign Up -->
+  <clr-modal [(clrModalOpen)]="signUpFail" [clrModalSize]="'xs'">
+    <h3 class="modal-title">Error</h3>
+    <div class="modal-body">
+      <h4>User Email Already Exist. Please use diffrent EmailId</h4>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline" (click)="closeModal('fail')">Ok</button>
+    </div>
+  </clr-modal>
+  <!-- Failure Sign Up ends -->

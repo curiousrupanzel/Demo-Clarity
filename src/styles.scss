@@ -4,5 +4,20 @@ input[type=text],
 input[type=number],
 input[type=password],
 select {
+  border: solid 1px slategrey !important;
+  border-radius: 9px !important;
+  min-height: 40px !important;
   width: 100% !important;
+  font-family: Helvetica_light;
+  background: transparent;
+  padding: 0 8px;
+}
+
+.clr-row{
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+.clr-error .clr-validate-icon {
+  display: none !important;
 }

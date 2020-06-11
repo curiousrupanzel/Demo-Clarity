@@ -1,0 +1,29 @@
+<div class="clr-row" style="margin-top: 10px;">
+  <div class="clr-col-12 clr-col-sm-12">
+    <owl-carousel-o [options]="customOptions" #owlCat>
+      <ng-container *ngFor="let image of imagesData">
+        <ng-template carouselSlide>
+          <div class="slide">
+            <img [src]="image.src" [alt]="image.alt" [title]="image.title" height="250">
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+</div>
+<div class="clr-row">
+  <div class="clr-col-sm-12">
+    <h3>Welcome to Verbal Section for testing your skill</h3>
+  </div>
+</div>
+<div class="clr-row">
+  <div class="clr-col card-back">
+    <h4>Text Completion Questions</h4>
+  </div>
+  <div class="clr-col card-back">
+    <h4>Reading Comprehension Practice</h4>
+  </div>
+  <div class="clr-col card-back">
+    <h4>Sentence Equivalence</h4>
+  </div>
+</div>

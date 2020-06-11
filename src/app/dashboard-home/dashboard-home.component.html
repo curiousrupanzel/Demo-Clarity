@@ -1,0 +1,75 @@
+<div class="clr-row" style="margin-top: 10px;">
+  <div class="clr-col-12 clr-col-sm-12">
+    <owl-carousel-o [options]="customOptions" #owlCat>
+      <ng-container *ngFor="let image of imagesData">
+        <ng-template carouselSlide>
+          <div class="slide">
+            <img [src]="image.src" [alt]="image.alt" [title]="image.title" height="250">
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+</div>
+<div class="clr-row">
+  <div class="clr-col">
+    <div class="card">
+      <div class="card-header">
+        <a href="javacsript://" [routerLink]="'/quant'">Practice quant Section</a>
+      </div>
+      <div class="card-block">
+        <div class="card-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia soluta distinctio accusantium animi excepturi,
+          porro quo explicabo repudiandae. Libero odit dolorem placeat molestias ipsa qui exercitationem rem. Laborum,
+          optio culpa.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clr-col">
+    <div class="card">
+      <div class="card-header">
+        <a href="javascript://" [routerLink]="'/verbal'">
+          Practice verbal Section
+        </a>
+      </div>
+      <div class="card-block">
+        <div class="card-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia soluta distinctio accusantium animi excepturi,
+          porro quo explicabo repudiandae. Libero odit dolorem placeat molestias ipsa qui exercitationem rem. Laborum,
+          optio culpa.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clr-col">
+    <div class="card">
+      <div class="card-header">
+        <a href="javascript://">
+          Practice Mixed Question
+        </a>
+      </div>
+      <div class="card-block">
+        <div class="card-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia soluta distinctio accusantium animi excepturi,
+          porro quo explicabo repudiandae. Libero odit dolorem placeat molestias ipsa qui exercitationem rem. Laborum,
+          optio culpa.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clr-col">
+    <div class="card">
+      <div class="card-header">
+        <a href="javascript://">View Solution to Quiz</a>
+      </div>
+      <div class="card-block">
+        <div class="card-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia soluta distinctio accusantium animi excepturi,
+          porro quo explicabo repudiandae. Libero odit dolorem placeat molestias ipsa qui exercitationem rem. Laborum,
+          optio culpa.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

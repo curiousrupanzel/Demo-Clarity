@@ -1,1 +1,13 @@
 //  add styles for componet
+.social-links{
+    text-align: center;
+    border: 1px solid dimgrey;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.social-links:hover{
+    background-color: whitesmoke;
+    transition: ease-in-out;
+}

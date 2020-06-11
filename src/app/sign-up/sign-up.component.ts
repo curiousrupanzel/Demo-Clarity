@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { GateWayService } from '../common/gateway.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ClrForm } from '@clr/angular';
+import { CustomValidator } from '../common/customValidator';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class SignUpComponent implements OnInit {
 
-  username: any;
-  password: any;
-  isNewUser: boolean;
+  @ViewChild(ClrForm, { static: false }) clrForm;
   signUpForm: FormGroup;
   countryData = [
     { name: 'Afghanistan', code: 'AF' },
@@ -262,37 +262,35 @@ export class LoginComponent implements OnInit {
   ];
   signupSuccessFull: boolean;
   signUpFail: boolean;
-  invalidUser: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
     private service: GateWayService,
     private activeRoute: ActivatedRoute,
     private route: Router
-  ) {
-    if (this.activeRoute.queryParams['isSignUp'] && this.activeRoute.queryParams['isSignUp'] == 'true') {
-      this.isNewUser = true;
-    }
-  }
+  ) { }
 
   ngOnInit() {
     this.initializeForm();
   }
 
-  validateUser() {
-    if (this.username && this.username != '' && this.password && this.password != '') {
-      const response = this.service.login(this.username, this.password);
-      if (response) {
-        this.route.navigate(['/dash']);
-      } else {
-        this.invalidUser = true;
-      }
-    }
+  private initializeForm() {
+    this.signUpForm = this.formBuilder.group({
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      emailId: ['', [Validators.required, CustomValidator.emailDomainValidator, CustomValidator.domainChecker]],
+      password: ['', [Validators.required]],
+      confirm: ['', [Validators.required]],
+      mobileNo: ['', [Validators.required, CustomValidator.numberValidator]],
+      country: ['', [Validators.required]],
+      age: ['', [Validators.required, CustomValidator.numberValidator]]
+    });
   }
 
   signNewUser() {
     if (this.signUpForm.invalid) {
       // error handling to be done here
+      this.clrForm.markAsDirty();
     } else {
       if (this.service.signup(this.signUpForm.getRawValue())) {
         // signupSuccesful
@@ -304,16 +302,17 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  private initializeForm() {
-    this.signUpForm = this.formBuilder.group({
-      firstName: [''],
-      lastName: [''],
-      emailId: ['', [Validators.email]],
-      password: [''],
-      confirmPassword: [''],
-      mobileNo: [''],
-      country: [''],
-      age: ['']
-    });
+  closeModal(scenario) {
+    switch (scenario) {
+      case 'success':
+        this.signupSuccessFull = false;
+        this.route.navigate(['/login']);
+        break;
+      case 'fail':
+        this.signUpFail = false;
+        this.signUpForm.reset('');
+        break;
+    }
   }
+
 }

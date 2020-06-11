@@ -1,0 +1,49 @@
+<div class="clr-row" style="margin-top: 10px;">
+  <div class="clr-col-12 clr-col-sm-12">
+    <owl-carousel-o [options]="customOptions" #owlCat>
+      <ng-container *ngFor="let image of imagesData">
+        <ng-template carouselSlide>
+          <div class="slide">
+            <img [src]="image.src" [alt]="image.alt" [title]="image.title" height="400">
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+</div>
+<div class="clr-row">
+  <div class="clr-col-sm-12" style="background-color: #e19090;border-radius: 10px;background: linear-gradient(-178deg,  #f44b4b 0%, #dddddd 160%);">
+    <h3 style="
+    margin: 0;
+    padding: 22px;
+    font-size: 35px;
+    text-align: center;
+    color: black;
+    font-weight: 500;
+    ">Testimonials</h3>
+  </div>
+</div>
+<div class="clr-row" style="margin: 40px 0;">
+  <div class="clr-col">
+    <clr-icon shape="block-quote" size="80"></clr-icon>
+    <p style="margin: 0 0 0 55px;text-align: justify;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet
+      consectetur adipisicing elit. Cum voluptatum veniam ducimus qui vel optio voluptates provident harum obcaecati
+      quidem. Reiciendis</p>
+    <clr-icon shape="block-quote" size="80" dir="down" style="float: right;"></clr-icon>
+  </div>
+  <div class="clr-col">
+    <clr-icon shape="block-quote" size="80"></clr-icon>
+    <p style="margin: 0 0 0 55px;text-align: justify;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet
+      consectetur adipisicing elit. Cum voluptatum veniam ducimus qui vel optio voluptates provident harum obcaecati
+      quidem. Reiciendis</p>
+    <clr-icon shape="block-quote" size="80" dir="down" style="float: right;"></clr-icon>
+  </div>
+  <div class="clr-col">
+    <clr-icon shape="block-quote" size="80"></clr-icon>
+    <p style="margin: 0 0 0 55px;text-align: justify;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet
+      consectetur adipisicing elit. Cum voluptatum veniam ducimus qui vel optio voluptates provident harum obcaecati
+      quidem. Reiciendis</p>
+    <clr-icon shape="block-quote" size="80" dir="down" style="float: right;"></clr-icon>
+  </div>
+</div>
+

@@ -1,0 +1,49 @@
+<ng-container>
+  <clr-header class="header header-1">
+    <div class="branding desktop-display">
+      <a routerLink="/dashboard" class="nav-link">
+        Logo
+      </a>
+    </div>
+    <div class="header-actions" *ngIf="isLoggedIn$ | async">
+      <span class="logged-in-user-info" *ngIf="userName">Hello, {{userName}}</span>
+      <a (click)="onLogout()" href="javascript://" class="nav-link nav-icon">
+        <clr-icon shape="power"></clr-icon>
+      </a>
+    </div>
+  </clr-header>
+  <nav class="subnav navigator">
+    <ul class="nav">
+      <li class="nav-item">
+        <ng-container>
+          <a class="nav-link" routerLinkActive="active" [routerLink]="'/home'">Home</a>
+        </ng-container>
+      </li>
+      <li class="nav-item">
+        <ng-container>
+          <a class="nav-link" routerLinkActive="active" [routerLink]="'/gre-prep'">Gre-Prep</a>
+        </ng-container>
+      </li>
+      <li class="nav-item">
+        <ng-container>
+          <a class="nav-link" routerLinkActive="active" [routerLink]="'/faq'">FAQs</a>
+        </ng-container>
+      </li>
+      <li class="nav-item">
+        <ng-container>
+          <a class="nav-link" routerLinkActive="active" [routerLink]="'/login'" *ngIf="!userName">Login</a>
+        </ng-container>
+      </li>
+      <li class="nav-item">
+        <ng-container>
+          <a class="nav-link" routerLinkActive="active" [routerLink]="'/sign-up'" *ngIf="!userName">Sign-Up</a>
+        </ng-container>
+      </li>
+      <li class="nav-item">
+        <ng-container>
+          <a class="nav-link" routerLinkActive="active" [routerLink]="'/why-us'">Why Us?</a>
+        </ng-container>
+      </li>
+    </ul>
+  </nav>
+</ng-container>
