@@ -24,8 +24,8 @@ export class GateWayService {
   }
 
   get UserName() {
-    if (sessionStorage.getItem('loggedInUser')) {
-      this.userName.next(JSON.parse(sessionStorage.getItem('loggedInUser')).FirstName);
+    if (localStorage.getItem('loggedInUser')) {
+      this.userName.next(JSON.parse(localStorage.getItem('loggedInUser'))[0].firstName);
     } else {
       this.userName.next('');
     }
@@ -38,8 +38,8 @@ export class GateWayService {
   }
 
   login(username: any, password: any) {
-    if (sessionStorage.getItem('availaibleUsers')) {
-      const userList = JSON.parse(sessionStorage.getItem('availaibleUsers'));
+    if (localStorage.getItem('availaibleUsers')) {
+      const userList = JSON.parse(localStorage.getItem('availaibleUsers'));
       const userExist = userList.filter(x => x.emailId == username);
       if (userExist.length > 0) {
         localStorage.setItem('loggedInUser', JSON.stringify(userExist));
@@ -53,20 +53,24 @@ export class GateWayService {
   }
 
   logout() {
+    localStorage.removeItem('loggedInUser');
+    this.loggedIn.next(false);
+    this.userName.next(undefined);
+    this.router.navigate(['/login']);
   }
 
   signup(InputData) {
     let availaibleUsersList = [];
-    if (sessionStorage.getItem('availaibleUsers')) {
-      availaibleUsersList = JSON.parse(sessionStorage.getItem('availaibleUsers'));
+    if (localStorage.getItem('availaibleUsers')) {
+      availaibleUsersList = JSON.parse(localStorage.getItem('availaibleUsers'));
       const userExist = availaibleUsersList.filter(x => x.emailId == InputData.emailId);
       if (userExist.length > 0) {
         return false;
       }
     }
     availaibleUsersList.push(InputData);
-    sessionStorage.removeItem('availaibleUsers');
-    sessionStorage.setItem('availaibleUsers', JSON.stringify(availaibleUsersList));
+    localStorage.removeItem('availaibleUsers');
+    localStorage.setItem('availaibleUsers', JSON.stringify(availaibleUsersList));
     return true;
   }
 }

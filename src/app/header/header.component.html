@@ -5,8 +5,8 @@
         Logo
       </a>
     </div>
-    <div class="header-actions" *ngIf="isLoggedIn$ | async">
-      <span class="logged-in-user-info" *ngIf="userName">Hello, {{userName}}</span>
+    <div class="header-actions" *ngIf="isSessionAvaialable">
+      <span class="logged-in-user-info">Hello, {{userName}}</span>
       <a (click)="onLogout()" href="javascript://" class="nav-link nav-icon">
         <clr-icon shape="power"></clr-icon>
       </a>
@@ -14,9 +14,14 @@
   </clr-header>
   <nav class="subnav navigator">
     <ul class="nav">
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!isSessionAvaialable">
         <ng-container>
           <a class="nav-link" routerLinkActive="active" [routerLink]="'/home'">Home</a>
+        </ng-container>
+      </li>
+      <li class="nav-item" *ngIf="isSessionAvaialable">
+        <ng-container>
+          <a class="nav-link" routerLinkActive="active" [routerLink]="'/dash'">Home</a>
         </ng-container>
       </li>
       <li class="nav-item">
@@ -29,17 +34,22 @@
           <a class="nav-link" routerLinkActive="active" [routerLink]="'/faq'">FAQs</a>
         </ng-container>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="isSessionAvaialable">
         <ng-container>
-          <a class="nav-link" routerLinkActive="active" [routerLink]="'/login'" *ngIf="!userName">Login</a>
+          <a class="nav-link" routerLinkActive="active" [routerLink]="'/faq'">University Vault</a>
         </ng-container>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!isSessionAvaialable">
         <ng-container>
-          <a class="nav-link" routerLinkActive="active" [routerLink]="'/sign-up'" *ngIf="!userName">Sign-Up</a>
+          <a class="nav-link" routerLinkActive="active" [routerLink]="'/login'">Login</a>
         </ng-container>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!isSessionAvaialable">
+        <ng-container>
+          <a class="nav-link" routerLinkActive="active" [routerLink]="'/sign-up'">Sign-Up</a>
+        </ng-container>
+      </li>
+      <li class="nav-item" *ngIf="!isSessionAvaialable">
         <ng-container>
           <a class="nav-link" routerLinkActive="active" [routerLink]="'/why-us'">Why Us?</a>
         </ng-container>

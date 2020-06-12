@@ -22,12 +22,22 @@ export class HeaderComponent implements OnInit {
     private route: Router
   ) { }
 
+  get isSessionAvaialable() {
+    if(localStorage.getItem('loggedInUser')){
+      this.service.UserName.subscribe(res => {
+        this.userName = res;
+      });
+    }
+    return localStorage.getItem('loggedInUser') ? true : false;
+  }
+
   ngOnInit() {
     this.isLoggedIn$ = this.service.isLoggedIn;
     this.showHeaderandNavigator$ = this.service.currentRoute;
-    this.service.UserName.subscribe(res => {
-      this.userName = res;
-    });
 
+  }
+
+  onLogout() {
+    this.service.logout();
   }
 }

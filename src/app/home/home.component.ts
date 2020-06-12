@@ -37,47 +37,17 @@ export class HomeComponent implements OnInit {
 
   imagesData: any[] = [
     {
-      src: 'assets/image1.png',
+      src: 'assets/banner2.png',
+      alt: 'Lorem',
+      title: 'Lorem'
+    },
+    {
+      src: 'assets/banner3.jpg',
       alt: '',
       title: ''
     },
     {
-      src: 'assets/image2.png',
-      alt: 'Lorem',
-      title: 'Lorem'
-    },
-    {
-      src: 'assets/image3.png',
-      alt: 'Lorem',
-      title: 'Lorem'
-    },
-    {
-      src: 'assets/image4.png',
-      alt: 'Lorem',
-      title: 'Lorem'
-    },
-    {
-      src: 'assets/image5.png',
-      alt: 'Lorem',
-      title: 'Lorem'
-    },
-    {
-      src: 'assets/image6.png',
-      alt: 'Lorem',
-      title: 'Lorem'
-    },
-    {
-      src: 'assets/image7.png',
-      alt: 'Lorem',
-      title: 'Lorem'
-    },
-    {
-      src: 'assets/image8.png',
-      alt: 'Lorem',
-      title: 'Lorem'
-    },
-    {
-      src: 'assets/image9.png',
+      src: 'assets/banner1.jpg',
       alt: 'Lorem',
       title: 'Lorem'
     }

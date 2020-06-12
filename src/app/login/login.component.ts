@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { GateWayService } from '../common/gateway.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ClrForm } from '@clr/angular';
 
 @Component({
   selector: 'app-login',
@@ -263,6 +264,8 @@ export class LoginComponent implements OnInit {
   signupSuccessFull: boolean;
   signUpFail: boolean;
   invalidUser: boolean;
+  loginForm: FormGroup;
+  @ViewChild(ClrForm, { static: false }) clrForm;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -280,8 +283,10 @@ export class LoginComponent implements OnInit {
   }
 
   validateUser() {
-    if (this.username && this.username != '' && this.password && this.password != '') {
-      const response = this.service.login(this.username, this.password);
+    if (this.loginForm.invalid) {
+      this.clrForm.markAsDirty();
+    } else {
+      const response = this.service.login(this.loginForm.value.username, this.loginForm.value.password);
       if (response) {
         this.route.navigate(['/dash']);
       } else {
@@ -314,6 +319,12 @@ export class LoginComponent implements OnInit {
       mobileNo: [''],
       country: [''],
       age: ['']
+    });
+
+    this.loginForm = this.formBuilder.group({
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+      rememberMe: ['']
     });
   }
 }
