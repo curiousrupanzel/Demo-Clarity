@@ -278,13 +278,13 @@ export class SignUpComponent implements OnInit {
     this.signUpForm = this.formBuilder.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
-      emailId: ['', [Validators.required, CustomValidator.emailDomainValidator, CustomValidator.domainChecker]],
+      emailId: ['', [Validators.required, CustomValidator.emailDomainValidator]],
       password: ['', [Validators.required]],
       confirm: ['', [Validators.required]],
       mobileNo: ['', [Validators.required, CustomValidator.numberValidator]],
       country: ['', [Validators.required]],
       age: ['', [Validators.required, CustomValidator.numberValidator]]
-    });
+    }, { validators: CustomValidator.matchPassword });
   }
 
   signNewUser() {

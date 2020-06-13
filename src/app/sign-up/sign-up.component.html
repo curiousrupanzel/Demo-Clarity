@@ -9,33 +9,33 @@
       <clr-input-container>
         <label class="clr-col-sm-12">First Name</label>
         <input class="clr-col-12 clr-col-sm-12" type="text" clrInput maxlength="100" formControlName="firstName" />
-        <clr-control-error *clrIfError="required">First Name is required</clr-control-error>
+        <clr-control-error *clrIfError="'required'">First Name is required</clr-control-error>
       </clr-input-container>
       <clr-input-container>
         <label class="clr-col-sm-12">Last Name</label>
         <input class="clr-col-12 clr-col-sm-12" type="text" clrInput maxlength="100" formControlName="lastName" />
-        <clr-control-error *clrIfError="required">Last Name is required</clr-control-error>
+        <clr-control-error *clrIfError="'required'">Last Name is required</clr-control-error>
       </clr-input-container>
       <clr-input-container>
         <label class="clr-col-sm-12">Email Id</label>
         <input class="clr-col-12 clr-col-sm-12" type="text" clrInput maxlength="100" formControlName="emailId" />
-        <clr-control-error *clrIfError="required">EmailId is required</clr-control-error>
-        <clr-control-error *clrIfError="invalidEmail">Invalid format for Email</clr-control-error>
-        <clr-control-error *clrIfError="invalidDomain">Invalid Domain for Email. Either use @gmail.com or @dal.ca
+        <clr-control-error *clrIfError="'required'">EmailId is required</clr-control-error>
+        <clr-control-error *clrIfError="'invalidEmail'">Invalid format for Email. Please use either use @gmail.com or @dal.ca</clr-control-error>
+        <clr-control-error *clrIfError="'invalidDomain'">Invalid Domain for Email. Either use @gmail.com or @dal.ca
         </clr-control-error>
       </clr-input-container>
       <clr-input-container>
         <label class="clr-col-sm-12">Password</label>
         <input class="clr-col-12 clr-col-sm-12" type="password" clrInput minlength="8" maxlength="32"
           formControlName="password" />
-        <clr-control-error>Password is required</clr-control-error>
+        <clr-control-error *clrIfError="'required'">Password is required</clr-control-error>
       </clr-input-container>
       <clr-input-container>
         <label class="clr-col-sm-12">Confirm Password</label>
         <input class="clr-col-12 clr-col-sm-12" type="password" clrInput minlength="8" maxlength="32"
           formControlName="confirm" />
-        <clr-control-error *clrIfError="required">Confirm Password is required</clr-control-error>
-        <clr-control-error *clrIfError="invalidPassword">Password doesnot Match</clr-control-error>
+        <clr-control-error *clrIfError="'required'">Confirm Password is required</clr-control-error>
+        <clr-control-error *ngIf="signUpForm.hasError('invalidPassword')">Password doesnot Match</clr-control-error>
       </clr-input-container>
       <div class="clr-row">
         <div class="clr-col-sm-4">
@@ -47,22 +47,23 @@
                 {{unit.name}}
               </option>
             </select>
-            <clr-control-error>Country is required</clr-control-error>
+            <clr-control-error *clrIfError="'required'"> Country is required</clr-control-error>
           </clr-select-container>
         </div>
         <div class="clr-col-sm-4">
           <clr-input-container>
             <label class="clr-col-sm-12">Mobile Number</label>
-            <input class="clr-col-12 clr-col-sm-12" type="text" clrInput maxlength="100" formControlName="mobileNo" />
-            <clr-control-error *clrIfError="required">Mobile No is required</clr-control-error>
-            <clr-control-error *clrIfError="invalidNumber">Please use numbers.</clr-control-error>
+            <input class="clr-col-12 clr-col-sm-12" type="text" clrInput maxlength="10" minlength="10"  formControlName="mobileNo" />
+            <clr-control-error *clrIfError="'required'">Mobile No is required</clr-control-error>
+            <clr-control-error *clrIfError="'length'">Use 10 digit numbers</clr-control-error>
+            <clr-control-error *clrIfError="'invalidNumber'">Inavlid fromat. Please use numbers.</clr-control-error>
           </clr-input-container>
         </div>
         <div class="clr-col-sm-4">
           <clr-input-container>
             <label class="clr-col-sm-12">Age</label>
             <input class="clr-col-12 clr-col-sm-12" type="text" clrInput maxlength="100" formControlName="age" />
-            <clr-control-error>age No is required</clr-control-error>
+            <clr-control-error *clrIfError="'required'">age No is required</clr-control-error>
           </clr-input-container>
         </div>
       </div>

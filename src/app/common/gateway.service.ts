@@ -40,8 +40,8 @@ export class GateWayService {
   login(username: any, password: any) {
     if (localStorage.getItem('availaibleUsers')) {
       const userList = JSON.parse(localStorage.getItem('availaibleUsers'));
-      const userExist = userList.filter(x => x.emailId == username);
-      if (userExist.length > 0) {
+      const userExist = userList.find(x => x.emailId == username);
+      if (userExist && userExist.password == password) {
         localStorage.setItem('loggedInUser', JSON.stringify(userExist));
         return true;
       } else {
